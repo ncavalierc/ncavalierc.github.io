@@ -35,7 +35,8 @@ $(document).ready(function() {
 
 
 	
-	var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+	var width = $(document).width();
+ 	var height = $(window).height();
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
 
@@ -53,7 +54,7 @@ $(document).ready(function() {
 	console.log('ici')
 	console.log(width)
 	console.log(page)
-	if (page == 'index.html') {
+	if (page == '') {
 		console.log('oto')
 		if (width < 800) {
 			console.log('là')
