@@ -51,6 +51,7 @@ $(document).ready(function() {
 
 	// remove dot motim.pictures
 	console.log('ici')
+	console.log(width)
 	if (page == 'index.html') {
 		if (width < 800) {
 			console.log('là')
