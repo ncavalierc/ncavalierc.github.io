@@ -35,8 +35,7 @@ $(document).ready(function() {
 
 
 	
-	var width = $(document).width();
-	var height = $(window).height();
+	var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
 
@@ -51,8 +50,10 @@ $(document).ready(function() {
 
 
 	// remove dot motim.pictures
+	console.log('ici')
 	if (page == 'index.html') {
 		if (width < 800) {
+			console.log('là')
 			let titre = document.getElementById("titre")
 			titre.textContent="Pictures";
 		}
