@@ -52,6 +52,7 @@ $(document).ready(function() {
 	// remove dot motim.pictures
 	console.log('ici')
 	console.log(width)
+	console.log(page)
 	if (page == 'index.html') {
 		console.log('oto')
 		if (width < 800) {
