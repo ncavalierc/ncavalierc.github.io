@@ -51,13 +51,8 @@ $(document).ready(function() {
 
 
 	// remove dot motim.pictures
-	console.log('ici')
-	console.log(width)
-	console.log(page)
-	if (page == '') {
-		console.log('oto')
+	if (page == 'index.html' || page == '') {
 		if (width < 800) {
-			console.log('là')
 			let titre = document.getElementById("titre")
 			titre.textContent="Pictures";
 		}
