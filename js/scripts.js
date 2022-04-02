@@ -53,6 +53,7 @@ $(document).ready(function() {
 	console.log('ici')
 	console.log(width)
 	if (page == 'index.html') {
+		console.log('oto')
 		if (width < 800) {
 			console.log('là')
 			let titre = document.getElementById("titre")
