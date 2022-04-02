@@ -249,13 +249,13 @@ Portfolio
 Photos
 ========================================================================== */
 .photo { padding-left: 15px; }
-.photo .img { position: relative; margin-bottom: 30px; position: relative; z-index: 1; overflow: hidden; }
+.photo .img { position: relative; margin-bottom: 30px; position: relative; z-index: 1; overflow: hidden; height: 100%; }
 .photo .img:nth-child(n) { margin-right: 5px; }
 .photo .img:first-child { margin-left: -15px; }
-.photo .img:last-child { margin-right: 0; }
+.photo .img:last-child { margin-right: 0;}
 .photo .img img { display: block; margin: 0; padding: 0; height: auto; }
 .photos .img img { width: -webkit-calc(100% + 40px) !important; width: calc(100% + 40px) !important; -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -moz-transition: opacity 0.35s, -moz-transform 0.35s; -o-transition: opacity 0.35s, -o-transform 0.35s; }
-#photos { background-color: #171717; margin-bottom: -50px;}
+#photos { background-color: #171717; margin-bottom: -75px; margin-top: -25px;}
 /* ==========================================================================
 Vidéos
 ========================================================================== */
@@ -267,12 +267,6 @@ Vidéos
 .videos .img img { display: block; margin: 0; padding: 0; height: auto; }
 .videos .img img { width: -webkit-calc(100% + 40px) !important; width: calc(100% + 40px) !important; -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -moz-transition: opacity 0.35s, -moz-transform 0.35s; -o-transition: opacity 0.35s, -o-transform 0.35s; }
 #videos { background-color: #171717; margin-bottom: -50px;}
-
-.videos .iconify  { position : absolute; z-index: -1; display: block;}
-.full-screen {position: absolute; top:0; right:0; bottom: 0; left: 0; background-color: rgba(0, 0, 0, 0.85); color: white; z-index: 5; height: 100%;}
-.videos a {cursor:pointer;}
-.hidden {display: none;}
-.flex-container-center {display: flex; flex-direction: column; justify-content: center; align-items: center;}
 /* ==========================================================================
 Contact
 ========================================================================== */
