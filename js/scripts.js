@@ -39,6 +39,11 @@ $(document).ready(function() {
  	var height = $(window).height();
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
+	var year = new Date().getFullYear();
+
+	let copyright = document.getElementById("copyright")
+	copyright.textContent=year.toString();
+	copyright.style.color = "grey"
 
 
 	// contact center
