@@ -259,7 +259,7 @@ Photos
 /* ==========================================================================
 Vidéos
 ========================================================================== */
-.videos { padding-left: 0px; }
+.videos { padding-left: 0px;}
 .videos .img { position: relative; margin-bottom: 30px; position: relative; z-index: 1; overflow: hidden; }
 .videos .img:nth-child(n) { margin-right: 5px; }
 .videos .img:first-child { margin-left: -15px; }
