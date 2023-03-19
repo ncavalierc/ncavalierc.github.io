@@ -255,7 +255,7 @@ Photos
 .photo .img:last-child { margin-right: 0;}
 .photo .img img { display: block; margin: 0; padding: 0; height: auto; }
 .photos .img img { width: -webkit-calc(100% + 40px) !important; width: calc(100% + 40px) !important; -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -moz-transition: opacity 0.35s, -moz-transform 0.35s; -o-transition: opacity 0.35s, -o-transform 0.35s; }
-#photos { background-color: #171717; margin-bottom: -50px}
+#photos { background-color: #171717; margin-bottom: -100px; margin-top: -50px;}
 /* ==========================================================================
 Vidéos
 ========================================================================== */
