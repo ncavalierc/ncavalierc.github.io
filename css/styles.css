@@ -266,7 +266,7 @@ Vidéos
 .videos .img:last-child { margin-right: 0; }
 .videos .img img { display: block; margin: 0; padding: 0; height: auto; }
 .videos .img img { width: -webkit-calc(100% + 40px) !important; width: calc(100% + 40px) !important; -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -moz-transition: opacity 0.35s, -moz-transform 0.35s; -o-transition: opacity 0.35s, -o-transform 0.35s; }
-#videos { background-color: #171717; margin-bottom: -50px;}
+#videos { background-color: #171717; margin-bottom: -100px; margin-top:-50px}
 /* ==========================================================================
 Contact
 ========================================================================== */
