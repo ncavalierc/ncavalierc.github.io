@@ -141,6 +141,8 @@ $(window).load(function() {
 
 $(function(){
     let YouTubeContainers = document.querySelectorAll(".embed-youtube");
+	var path = window.location.pathname;
+	var page = path.split("/").pop();
 
     // Iterate over every YouTube container you may have
     for (let i = 0; i < YouTubeContainers.length; i++) {
@@ -155,17 +157,18 @@ $(function(){
 
         // When the user clicks on the container, load the embedded YouTube video
         container.addEventListener("click", function() {
-            let iframe = document.createElement( "iframe" );
+			let iframe = document.createElement( "iframe" );
 
-            iframe.setAttribute("frameborder", "0");
-            iframe.setAttribute("allowfullscreen", "");
-            iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-            // Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it 
-            iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&showinfo=0&autoplay=1");
+			iframe.setAttribute("frameborder", "0");
+			iframe.setAttribute("allowfullscreen", "");
+			iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
+			// Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it 
+			iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&showinfo=0&autoplay=1");
 
-            // Clear Thumbnail and load the YouTube iframe
-            this.innerHTML = "";
-            this.appendChild( iframe );
+			// Clear Thumbnail and load the YouTube iframe
+			this.innerHTML = "";
+			this.appendChild( iframe );
+
         });
     }
 });
