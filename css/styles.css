@@ -248,7 +248,7 @@ Portfolio
 /* ==========================================================================
 Photos
 ========================================================================== */
-.photo { padding-left: 15px; }
+.photo { padding-left: 15px;}
 .photo .img { position: relative; margin-bottom: 30px; position: relative; z-index: 1; overflow: hidden; height: 100%; }
 .photo .img:nth-child(n) { margin-right: 5px; }
 .photo .img:first-child { margin-left: -15px; }
@@ -358,4 +358,16 @@ Videos
 
 .embed-youtube .embed-youtube-play:hover {
     background-color: #f00;
+}
+
+#text_presta{
+    margin-left:10%;
+    margin-right:10%;
+    margin-top:50px;
+    margin-bottom: -50px;
+    font-size: medium;
+}
+
+h2{
+    text-align: center;
 }
