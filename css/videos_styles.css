@@ -250,7 +250,7 @@ Portfolio
 /* ==========================================================================
 Photos
 ========================================================================== */
-.photo { padding-left: 15px;}
+.photo { padding-left: 30px; padding-right:15px;}
 .photo .img { position: relative; margin-bottom: 30px; position: relative; z-index: 1; overflow: hidden; height: 100%; }
 .photo .img:nth-child(n) { margin-right: 5px; }
 .photo .img:first-child { margin-left: -15px; }
@@ -381,10 +381,3 @@ h3{
 div#confiance{
     margin: auto;
 }
-
-@media screen and (max-width: 900px) {
-    .photo .img {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-  }
