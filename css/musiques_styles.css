@@ -227,7 +227,9 @@ header
 ========================================================================== */
 .header { background-color: #171717; padding: 45px 0 50px 0;}
 #logo-header {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px);}
-
+.prestations{
+    padding-left:40px
+}
 /* ==========================================================================
 Intro
 ========================================================================== */

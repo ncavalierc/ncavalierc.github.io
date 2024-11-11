@@ -82,19 +82,28 @@ $(window).load(function() {
 
 $(function() {
 
+	// Fonction de défilement avec offset
+	function scrollToAnchor(anchor) {
+		var target = $(anchor);
+		if (target.length) {
+			$('html,body').animate({
+				scrollTop: target.offset().top - 40  // Ajuster l'offset ici
+			}, 2000);
+		}
+	}
+
+	// Déclenche le défilement si un lien avec ancre est cliqué
 	$('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-
-			var target = $(this.hash);
-			target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-			if (target.length) {
-				$('html,body').animate({
-					scrollTop: target.offset().top
-				}, 2000);
-				return false;
-			}
+			scrollToAnchor(this.hash);
+			return false;
 		}
 	});
+
+	// Vérifie et active le défilement à l'ancre au chargement de la page
+	if (window.location.hash) {
+		scrollToAnchor(window.location.hash);
+	}
 
 });
 
@@ -137,6 +146,7 @@ $(window).load(function() {
 	});
 
 });
+
 
 
 $(function(){
