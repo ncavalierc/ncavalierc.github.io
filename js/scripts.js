@@ -47,6 +47,35 @@ $(document).ready(function() {
 	copyright.style.color = "grey"
 
 
+	// Masquer le menu au chargement de la page
+    $('.pull').hide();
+
+    $('.nav_slide_button').click(function() {
+        $('.pull').slideToggle();
+    });
+
+	// Masquer le sous-menu par défaut au chargement de la page
+    $('.submenu').hide();
+
+    // Gestion du sous-menu pour Prestations avec un effet de glissement
+    $('.has-submenu > a').click(function(e) {
+        e.preventDefault(); // Empêche le lien d'agir comme une ancre
+        
+        var parent = $(this).parent(); // Récupère le parent (li)
+        var submenu = $(this).next('.submenu'); // Récupère le sous-menu
+
+        // Vérifie si le sous-menu est actuellement visible
+        if (submenu.is(':visible')) {
+            // Si visible, le fermer avec un effet de glissement
+            submenu.stop(true, true).slideUp();
+            parent.removeClass('active');
+        } else {
+            // Si caché, l'ouvrir avec un effet de glissement
+            submenu.stop(true, true).slideDown();
+            parent.addClass('active');
+        }
+    });
+
 	// contact center
 	if (page == 'contact.html'){
 		var contact = document.getElementById('contact');
@@ -64,19 +93,11 @@ $(document).ready(function() {
 		}
 	
 	}
+
     
 
 });
 
-/***************** Slide-In Nav ******************/
-
-$(window).load(function() {
-
-	$('.nav_slide_button').click(function() {
-		$('.pull').slideToggle();
-	});
-
-});
 
 /***************** Smooth Scrolling ******************/
 
