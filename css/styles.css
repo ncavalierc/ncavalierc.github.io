@@ -358,10 +358,11 @@ Videos
     transform: translate3d( -50%, -50%, 0 );
 }
 .embed-youtube iframe {
-    height: 100%;
-    width: 100%;
-    top: 0;
+    position: absolute;
+    top: -60px;
     left: 0;
+    width: 100%;
+    height: calc(100% + 120px);
 }
 
 .embed-youtube .embed-youtube-play:hover {
