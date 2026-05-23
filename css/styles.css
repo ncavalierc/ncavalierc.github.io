@@ -383,3 +383,86 @@ h2{
 h3{
     text-align: center;
 }
+
+.confiance ul {
+    padding: 0;
+    list-style: none;
+}
+
+.confiance .photo .img {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confiance .photo .img img {
+    height: 180px;
+    width: auto;
+    max-width: 100%;
+    transform: none !important;
+    -webkit-transform: none !important;
+}
+
+@media screen and (max-width:991px) {
+    .confiance .photo {
+        padding-left: 0;
+    }
+    .confiance .photo .img {
+        margin-left: 0 !important;
+        overflow: visible;
+    }
+    .confiance .photo .img img {
+        display: block;
+        margin: 0 auto;
+        width: auto !important;
+    }
+}
+
+/* ==========================================================================
+Page-specific hero backgrounds
+========================================================================== */
+.page-drone .hero          { background-image: url('../img/drone1.webp'); }
+.page-clips .hero          { background-image: url('../img/billy.webp'); }
+.page-musiques .hero       { background-image: url('../img/excalibur.webp'); }
+.page-docus .hero          { background-image: url('../img/docus1.webp'); }
+.page-shootings .hero      { background-image: url('../img/mariage1.webp'); }
+.page-videosevenements .hero { background-image: url('../img/fleurmariage.webp'); }
+
+/* ==========================================================================
+Page-specific accent color (prestation pages)
+========================================================================== */
+.page-drone a,
+.page-clips a,
+.page-musiques a,
+.page-docus a,
+.page-shootings a,
+.page-videosevenements a { color: #8AB146; }
+
+/* ==========================================================================
+Page-specific typography (prestation pages)
+========================================================================== */
+.page-drone h3,
+.page-clips h3,
+.page-musiques h3,
+.page-docus h3,
+.page-shootings h3,
+.page-videosevenements h3 { font-size: 16px; font-weight: lighter; }
+
+.page-shootings h4 { font-size: 16px; color: #DBDBDB; font-weight: lighter; margin: 0.83em 0; }
+
+/* ==========================================================================
+Page-specific photo padding (photos & videos pages)
+========================================================================== */
+.page-photos .photo,
+.page-videos .photo { padding-left: 30px; padding-right: 15px; }
+
+/* ==========================================================================
+Fixed footer pages
+========================================================================== */
+.page-photos .footer,
+.page-videos .footer,
+.page-drone .footer,
+.page-clips .footer,
+.page-musiques .footer,
+.page-videosevenements .footer { position: fixed; }
