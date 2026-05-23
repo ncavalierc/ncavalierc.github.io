@@ -125,7 +125,7 @@ $(function() {
 
 /***************** Flexsliders ******************/
 
-$(window).load(function() {
+$(window).on('load', function() {
 
 	$('#portfolioSlider').flexslider({
 		animation: "slide",
