@@ -362,6 +362,8 @@ Videos
     width: 100%;
     top: 0;
     left: 0;
+    transform: scale(1.334);
+    transform-origin: center center;
 }
 
 .embed-youtube .embed-youtube-play:hover {
