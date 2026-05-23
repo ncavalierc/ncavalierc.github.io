@@ -151,7 +151,7 @@ $(function(){
     // Iterate over every YouTube container you may have
     for (let i = 0; i < YouTubeContainers.length; i++) {
         let container = YouTubeContainers[i];
-		let imageSource= "https://github.com/ncavalierc/images/raw/main/" + container.dataset.videoId.toString().toLowerCase().replace(/_/g, "-")  + ".webp";
+		let imageSource= "img/videos/" + container.dataset.videoId.toString().toLowerCase().replace(/_/g, "-")  + ".webp";
         // Load the Thumbnail Image asynchronously
         let image = new Image();
         image.src = imageSource;
