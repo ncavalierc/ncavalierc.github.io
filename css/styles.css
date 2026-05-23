@@ -498,7 +498,7 @@ Lightbox (photos page only)
 #lightbox-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.82);
+    background: rgba(0, 0, 0, 0.65);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 9999;
