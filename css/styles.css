@@ -359,10 +359,10 @@ Videos
 }
 .embed-youtube iframe {
     position: absolute;
-    top: -20px;
-    left: -20px;
-    width: calc(100% + 40px);
-    height: calc(100% + 40px);
+    top: 0;
+    left: -40px;
+    width: calc(100% + 80px);
+    height: 100%;
 }
 
 .embed-youtube .embed-youtube-play:hover {
