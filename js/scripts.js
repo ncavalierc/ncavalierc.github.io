@@ -188,8 +188,34 @@ $(function(){
     let YouTubeContainers = document.querySelectorAll(".embed-youtube");
 	var path = window.location.pathname;
 	var page = path.split("/").pop();
+	var width = $(document).width();
 
-    // Iterate over every YouTube container you may have
+	// Video lightbox – videos page, desktop only
+	var videoLightbox = (page == 'videos.html' && width >= 768);
+	var $vOverlay, $vWrapper;
+
+	if (videoLightbox) {
+		$vOverlay  = $('<div id="lightbox-overlay"></div>');
+		var $vContainer = $('<div id="lightbox-container"></div>');
+		$vWrapper  = $('<div id="lightbox-video-wrapper"></div>');
+		var $vClose = $('<button id="lightbox-close" aria-label="Fermer">&#x2715;</button>');
+
+		$vContainer.append($vClose).append($vWrapper);
+		$vOverlay.append($vContainer);
+		$('body').append($vOverlay);
+
+		function closeVideoLightbox() {
+			$vWrapper.empty();
+			$vOverlay.removeClass('lb-active');
+			$('body').css('overflow', '');
+		}
+
+		$vClose.on('click', function(e) { e.stopPropagation(); closeVideoLightbox(); });
+		$vOverlay.on('click', function(e) { if ($(e.target).is('#lightbox-overlay')) closeVideoLightbox(); });
+		$(document).on('keydown', function(e) { if (e.key === 'Escape') closeVideoLightbox(); });
+	}
+
+    // Iterate over every YouTube container
     for (let i = 0; i < YouTubeContainers.length; i++) {
         let container = YouTubeContainers[i];
 		let imageSource= "img/videos/" + container.dataset.videoId.toString().toLowerCase().replace(/_/g, "-")  + ".webp";
@@ -202,19 +228,24 @@ $(function(){
 
         // When the user clicks on the container, load the embedded YouTube video
         container.addEventListener("click", function() {
-			let iframe = document.createElement( "iframe" );
-
+			let src = "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1";
+			let iframe = document.createElement("iframe");
 			iframe.setAttribute("frameborder", "0");
 			iframe.setAttribute("allowfullscreen", "");
 			iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-			// Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it
-			iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1");
+			iframe.setAttribute("src", src);
 
-			// Clear Thumbnail, remove pointer cursor so the iframe receives hover events natively
-			this.innerHTML = "";
-			this.style.cursor = "default";
-			this.appendChild( iframe );
-
+			if (videoLightbox) {
+				// Desktop: open in lightbox overlay
+				$vWrapper.empty().append(iframe);
+				$vOverlay.addClass('lb-active');
+				$('body').css('overflow', 'hidden');
+			} else {
+				// Mobile: replace thumbnail inline
+				this.innerHTML = "";
+				this.style.cursor = "default";
+				this.appendChild(iframe);
+			}
         });
     }
 });
