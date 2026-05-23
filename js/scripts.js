@@ -167,7 +167,7 @@ $(function(){
 			iframe.setAttribute("allowfullscreen", "");
 			iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
 			// Important: add the autoplay GET parameter, otherwise the user would need to click over the YouTube video again to play it
-			iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&autoplay=1&modestbranding=1");
+			iframe.setAttribute("src", "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&autoplay=1&modestbranding=1&vq=hd1080");
 
 			// Clear Thumbnail, remove pointer cursor so the iframe receives hover events natively
 			this.innerHTML = "";
