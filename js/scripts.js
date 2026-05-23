@@ -85,10 +85,51 @@ $(document).ready(function() {
 			let titre = document.getElementById("titre")
 			titre.textContent="Pictures";
 		}
-	
+
 	}
 
-    
+	// Lightbox – photos page only
+	if (page == 'photos.html') {
+		var $overlay   = $('<div id="lightbox-overlay"></div>');
+		var $container = $('<div id="lightbox-container"></div>');
+		var $img       = $('<img id="lightbox-img" alt="">');
+		var $closeBtn  = $('<button id="lightbox-close" aria-label="Fermer">&#x2715;</button>');
+
+		$container.append($closeBtn).append($img);
+		$overlay.append($container);
+		$('body').append($overlay);
+
+		function openLightbox(src, alt) {
+			$img.attr({ src: src, alt: alt });
+			$overlay.addClass('lb-active');
+			$('body').css('overflow', 'hidden');
+		}
+
+		function closeLightbox() {
+			$overlay.removeClass('lb-active');
+			$('body').css('overflow', '');
+		}
+
+		$('.photos .photo .img').on('click', function() {
+			var $i = $(this).find('img');
+			openLightbox($i.attr('src'), $i.attr('alt'));
+		});
+
+		$closeBtn.on('click', function(e) {
+			e.stopPropagation();
+			closeLightbox();
+		});
+
+		$overlay.on('click', function(e) {
+			if ($(e.target).is('#lightbox-overlay')) closeLightbox();
+		});
+
+		$(document).on('keydown', function(e) {
+			if (e.key === 'Escape') closeLightbox();
+		});
+	}
+
+
 
 });
 
