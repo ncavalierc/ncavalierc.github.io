@@ -463,15 +463,17 @@ Page-specific photo padding (photos & videos pages)
 /* ==========================================================================
 Lightbox (photos page only)
 ========================================================================== */
-.page-photos .photos .photo .img {
-    cursor: zoom-in;
-}
-.page-photos .photos .photo .img img {
-    transition: opacity 0.35s ease, transform 0.35s ease !important;
-}
-.page-photos .photos .photo .img:hover img {
-    opacity: 1 !important;
-    transform: scale(1.04) !important;
+@media (min-width: 768px) {
+    .page-photos .photos .photo .img {
+        cursor: zoom-in;
+    }
+    .page-photos .photos .photo .img img {
+        transition: opacity 0.35s ease, transform 0.35s ease !important;
+    }
+    .page-photos .photos .photo .img:hover img {
+        opacity: 1 !important;
+        transform: scale(1.04) !important;
+    }
 }
 
 #lightbox-overlay {

@@ -88,8 +88,8 @@ $(document).ready(function() {
 
 	}
 
-	// Lightbox – photos page only
-	if (page == 'photos.html') {
+	// Lightbox – photos page only, desktop only (width >= 768)
+	if (page == 'photos.html' && width >= 768) {
 		var $overlay   = $('<div id="lightbox-overlay"></div>');
 		var $container = $('<div id="lightbox-container"></div>');
 		var $img       = $('<img id="lightbox-img" alt="">');
