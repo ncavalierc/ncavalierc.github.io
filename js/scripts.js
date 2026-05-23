@@ -28,14 +28,8 @@ $(document).ready(function() {
 	}, {
 		offset: '75%'
 	});
-	$('.wp6').waypoint(function() {
-		$('.wp6').addClass('animated fadeInDown');
-	}, {
-		offset: '75%'
-	});
 
 
-	
 	var width = $(document).width();
  	var height = $(window).height();
 	var path = window.location.pathname;
@@ -144,27 +138,6 @@ $(window).load(function() {
 		}
 	});
 
-	$('#servicesSlider').flexslider({
-		animation: "slide",
-		directionNav: false,
-		controlNav: true,
-		touch: true,
-		pauseOnHover: true,
-		start: function() {
-			$.waypoints('refresh');
-		}
-	});
-
-	$('#teamSlider').flexslider({
-		animation: "slide",
-		directionNav: false,
-		controlNav: true,
-		touch: true,
-		pauseOnHover: true,
-		start: function() {
-			$.waypoints('refresh');
-		}
-	});
 
 });
 
