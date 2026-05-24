@@ -442,6 +442,25 @@ Page-specific accent color (prestation pages)
 .page-shootings a,
 .page-videosevenements a { color: #8AB146; }
 
+.page-drone nav ul li a,
+.page-clips nav ul li a,
+.page-musiques nav ul li a,
+.page-docus nav ul li a,
+.page-shootings nav ul li a,
+.page-videosevenements nav ul li a { color: rgba(255, 255, 255, 0.6); }
+
+.page-drone nav ul li a.current,
+.page-clips nav ul li a.current,
+.page-musiques nav ul li a.current,
+.page-docus nav ul li a.current,
+.page-shootings nav ul li a.current,
+.page-videosevenements nav ul li a.current { color: #ffffff; }
+
+/* ==========================================================================
+Page-specific photo caption alignment (clips page)
+========================================================================== */
+.page-clips #portfolioSlider .photo h2 { margin-left: -15px; }
+
 /* ==========================================================================
 Page-specific typography (prestation pages)
 ========================================================================== */
