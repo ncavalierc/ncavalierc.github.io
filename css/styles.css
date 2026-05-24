@@ -306,7 +306,8 @@ ul.slides li { margin-bottom: 20px; }
 Waypoints
 ========================================================================== */
 .wp1, .wp2, .wp3, .wp4, .wp5 { visibility: hidden; }
-.fadeInUp, .fadeInDown { visibility: visible; text-shadow: 2px 1px #000000; }
+.fadeInUp, .fadeInDown { visibility: visible; }
+header .fadeInUp, header .fadeInDown { text-shadow: 2px 1px #000000; }
 .delay-05s { animation-delay: 0.5s; -webkit-animation-delay: 0.5s; }
 
 /* ==========================================================================
