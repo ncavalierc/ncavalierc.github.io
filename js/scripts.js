@@ -1,162 +1,145 @@
 
+/***************** Constants ******************/
+
+const NAV_HEIGHT = 121;
+const FOOTER_HEIGHT = 74;
+const SCROLL_OFFSET = 40;
+const MOBILE_BREAKPOINT_PX = 800;
+
 /***************** Waypoints ******************/
+
+const WAYPOINTS = [
+	{ sel: '.wp1', offset: '75%', anim: 'fadeInLeft' },
+	{ sel: '.wp2', offset: '75%', anim: 'fadeInUp' },
+	{ sel: '.wp3', offset: '55%', anim: 'fadeInDown' },
+	{ sel: '.wp4', offset: '75%', anim: 'fadeInDown' },
+	{ sel: '.wp5', offset: '75%', anim: 'fadeInUp' },
+];
 
 $(document).ready(function() {
 
-	$('.wp1').waypoint(function() {
-		$('.wp1').addClass('animated fadeInLeft');
-	}, {
-		offset: '75%'
-	});
-	$('.wp2').waypoint(function() {
-		$('.wp2').addClass('animated fadeInUp');
-	}, {
-		offset: '75%'
-	});
-	$('.wp3').waypoint(function() {
-		$('.wp3').addClass('animated fadeInDown');
-	}, {
-		offset: '55%'
-	});
-	$('.wp4').waypoint(function() {
-		$('.wp4').addClass('animated fadeInDown');
-	}, {
-		offset: '75%'
-	});
-	$('.wp5').waypoint(function() {
-		$('.wp5').addClass('animated fadeInUp');
-	}, {
-		offset: '75%'
+	WAYPOINTS.forEach(({ sel, offset, anim }) => {
+		$(sel).waypoint(function() {
+			$(sel).addClass('animated ' + anim);
+		}, { offset: offset });
 	});
 
+	const width = $(document).width();
+	const height = $(window).height();
+	const page = window.location.pathname.split('/').pop();
+	const year = new Date().getFullYear();
 
-	var width = $(document).width();
- 	var height = $(window).height();
-	var path = window.location.pathname;
-	var page = path.split("/").pop();
-	var year = new Date().getFullYear();
-
-	let copyright = document.getElementById("copyright")
-	copyright.textContent=year.toString();
-	copyright.style.color = "grey"
-
-
-	// Masquer le menu au chargement de la page
-    $('.pull').hide();
-
-    $('.nav_slide_button').click(function() {
-        $('.pull').slideToggle();
-    });
-
-	// Masquer le sous-menu par défaut au chargement de la page
-    $('.submenu').hide();
-
-    // Gestion du sous-menu pour Prestations avec un effet de glissement
-    $('.has-submenu > a').click(function(e) {
-        e.preventDefault(); // Empêche le lien d'agir comme une ancre
-        
-        var parent = $(this).parent(); // Récupère le parent (li)
-        var submenu = $(this).next('.submenu'); // Récupère le sous-menu
-
-        // Vérifie si le sous-menu est actuellement visible
-        if (submenu.is(':visible')) {
-            // Si visible, le fermer avec un effet de glissement
-            submenu.stop(true, true).slideUp();
-            parent.removeClass('active');
-        } else {
-            // Si caché, l'ouvrir avec un effet de glissement
-            submenu.stop(true, true).slideDown();
-            parent.addClass('active');
-        }
-    });
-
-	// contact center
-	if (page == 'contact.html'){
-		var contact = document.getElementById('contact');
-		let contactHeight = height - 121 - 74
-		contact.style.height = contactHeight.toString() + "px";
-	}
-	
-
-
-	// remove dot motim.pictures
-	if (page == 'index.html' || page == '') {
-		if (width < 800) {
-			let titre = document.getElementById("titre")
-			titre.textContent="Pictures";
-		}
-
+	const copyright = document.getElementById('copyright');
+	if (copyright) {
+		copyright.textContent = year.toString();
 	}
 
-	// Lightbox – photos page only, desktop only (width >= 768)
-	if (page == 'photos.html' && width >= 768) {
-		var $overlay   = $('<div id="lightbox-overlay"></div>');
-		var $container = $('<div id="lightbox-container"></div>');
-		var $img       = $('<img id="lightbox-img" alt="">');
-		var $closeBtn  = $('<button id="lightbox-close" aria-label="Fermer">&#x2715;</button>');
+	$('.pull').hide();
 
-		$container.append($closeBtn).append($img);
-		$overlay.append($container);
-		$('body').append($overlay);
+	$('.nav_slide_button').click(function() {
+		$('.pull').slideToggle();
+	});
 
-		function openLightbox(src, alt) {
-			$img.attr({ src: src, alt: alt });
-			$overlay.addClass('lb-active');
-			$('body').css('overflow', 'hidden');
+	$('.submenu').hide();
+
+	$('.has-submenu > a').click(function(e) {
+		e.preventDefault();
+		const $toggle = $(this);
+		const parent = $toggle.parent();
+		const submenu = $toggle.next('.submenu');
+		const isOpen = submenu.is(':visible');
+		$toggle.attr('aria-expanded', isOpen ? 'false' : 'true');
+		if (isOpen) {
+			submenu.stop(true, true).slideUp();
+			parent.removeClass('active');
+		} else {
+			submenu.stop(true, true).slideDown();
+			parent.addClass('active');
 		}
+	});
 
-		function closeLightbox() {
-			$overlay.removeClass('lb-active');
-			$('body').css('overflow', '');
+	if (page === 'contact.html') {
+		const contact = document.getElementById('contact');
+		if (contact) {
+			contact.style.height = (height - NAV_HEIGHT - FOOTER_HEIGHT) + 'px';
 		}
+	}
+
+	if (page === 'index.html' || page === '') {
+		if (width < MOBILE_BREAKPOINT_PX) {
+			const titre = document.getElementById('titre');
+			if (titre) titre.textContent = 'Pictures';
+		}
+	}
+
+	if (page === 'photos.html' && width >= 768) {
+		const $img = $('<img id="lightbox-img" alt="">');
+		const lb = createLightbox({ content: $img });
 
 		$('.photos .photo .img').on('click', function() {
-			var $i = $(this).find('img');
-			openLightbox($i.attr('src'), $i.attr('alt'));
-		});
-
-		$closeBtn.on('click', function(e) {
-			e.stopPropagation();
-			closeLightbox();
-		});
-
-		$overlay.on('click', function(e) {
-			if ($(e.target).is('#lightbox-overlay')) closeLightbox();
-		});
-
-		$(document).on('keydown', function(e) {
-			if (e.key === 'Escape') closeLightbox();
+			const $i = $(this).find('img');
+			$img.attr({ src: $i.attr('src'), alt: $i.attr('alt') });
+			lb.open();
 		});
 	}
 
-
-
 });
+
+
+/***************** Lightbox factory ******************/
+
+function createLightbox({ content, onClose }) {
+	const $overlay   = $('<div id="lightbox-overlay"></div>');
+	const $container = $('<div id="lightbox-container"></div>');
+	const $closeBtn  = $('<button id="lightbox-close" aria-label="Fermer">&#x2715;</button>');
+
+	$container.append($closeBtn).append(content);
+	$overlay.append($container);
+	$('body').append($overlay);
+
+	function close() {
+		$overlay.removeClass('lb-active');
+		$('body').css('overflow', '');
+		if (onClose) onClose();
+	}
+
+	function open() {
+		$overlay.addClass('lb-active');
+		$('body').css('overflow', 'hidden');
+	}
+
+	$closeBtn.on('click', function(e) { e.stopPropagation(); close(); });
+	$overlay.on('click', function(e) {
+		if ($(e.target).is('#lightbox-overlay')) close();
+	});
+	$(document).on('keydown', function(e) {
+		if (e.key === 'Escape') close();
+	});
+
+	return { open: open, close: close };
+}
 
 
 /***************** Smooth Scrolling ******************/
 
 $(function() {
 
-	// Fonction de défilement avec offset
 	function scrollToAnchor(anchor) {
-		var target = $(anchor);
+		const target = $(anchor);
 		if (target.length) {
 			$('html,body').animate({
-				scrollTop: target.offset().top - 40  // Ajuster l'offset ici
+				scrollTop: target.offset().top - SCROLL_OFFSET
 			}, 2000);
 		}
 	}
 
-	// Déclenche le défilement si un lien avec ancre est cliqué
-	$('a[href*=#]:not([href=#])').click(function() {
+	$('a[href*="#"]:not([href="#"])').click(function() {
 		if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
 			scrollToAnchor(this.hash);
 			return false;
 		}
 	});
 
-	// Vérifie et active le défilement à l'ancre au chargement de la page
 	if (window.location.hash) {
 		scrollToAnchor(window.location.hash);
 	}
@@ -164,12 +147,12 @@ $(function() {
 });
 
 
-/***************** Flexsliders ******************/
+/***************** Flexslider ******************/
 
 $(window).on('load', function() {
 
 	$('#portfolioSlider').flexslider({
-		animation: "slide",
+		animation: 'slide',
 		directionNav: false,
 		controlNav: true,
 		touch: false,
@@ -179,73 +162,53 @@ $(window).on('load', function() {
 		}
 	});
 
-
 });
 
 
+/***************** YouTube embeds ******************/
 
-$(function(){
-    let YouTubeContainers = document.querySelectorAll(".embed-youtube");
-	var path = window.location.pathname;
-	var page = path.split("/").pop();
-	var width = $(document).width();
+$(function() {
+	const page = window.location.pathname.split('/').pop();
+	const width = $(document).width();
 
-	// Video lightbox – videos page, desktop only
-	var videoLightbox = (page == 'videos.html' && width >= 768);
-	var $vOverlay, $vWrapper;
+	const videoLightboxEnabled = (page === 'videos.html' && width >= 768);
+	let videoLightbox = null;
+	let $vWrapper = null;
 
-	if (videoLightbox) {
-		$vOverlay  = $('<div id="lightbox-overlay"></div>');
-		var $vContainer = $('<div id="lightbox-container"></div>');
-		$vWrapper  = $('<div id="lightbox-video-wrapper"></div>');
-		var $vClose = $('<button id="lightbox-close" aria-label="Fermer">&#x2715;</button>');
-
-		$vContainer.append($vClose).append($vWrapper);
-		$vOverlay.append($vContainer);
-		$('body').append($vOverlay);
-
-		function closeVideoLightbox() {
-			$vWrapper.empty();
-			$vOverlay.removeClass('lb-active');
-			$('body').css('overflow', '');
-		}
-
-		$vClose.on('click', function(e) { e.stopPropagation(); closeVideoLightbox(); });
-		$vOverlay.on('click', function(e) { if ($(e.target).is('#lightbox-overlay')) closeVideoLightbox(); });
-		$(document).on('keydown', function(e) { if (e.key === 'Escape') closeVideoLightbox(); });
+	if (videoLightboxEnabled) {
+		$vWrapper = $('<div id="lightbox-video-wrapper"></div>');
+		videoLightbox = createLightbox({
+			content: $vWrapper,
+			onClose: function() { $vWrapper.empty(); }
+		});
 	}
 
-    // Iterate over every YouTube container
-    for (let i = 0; i < YouTubeContainers.length; i++) {
-        let container = YouTubeContainers[i];
-		let imageSource= "img/videos/" + container.dataset.videoId.toString().toLowerCase().replace(/_/g, "-")  + ".webp";
-        // Load the Thumbnail Image asynchronously
-        let image = new Image();
-        image.src = imageSource;
-        image.addEventListener("load", function() {
-            container.appendChild(image);
-        });
+	const YouTubeContainers = document.querySelectorAll('.embed-youtube');
 
-        // When the user clicks on the container, load the embedded YouTube video
-        container.addEventListener("click", function() {
-			let src = "https://www.youtube.com/embed/"+ this.dataset.videoId +"?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1";
-			let iframe = document.createElement("iframe");
-			iframe.setAttribute("frameborder", "0");
-			iframe.setAttribute("allowfullscreen", "");
-			iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture");
-			iframe.setAttribute("src", src);
+	for (const container of YouTubeContainers) {
+		const imageSource = 'img/videos/' + container.dataset.videoId.toLowerCase().replace(/_/g, '-') + '.webp';
+		const image = new Image();
+		image.src = imageSource;
+		image.addEventListener('load', function() {
+			container.appendChild(image);
+		});
 
-			if (videoLightbox) {
-				// Desktop: open in lightbox overlay
+		container.addEventListener('click', function() {
+			const src = 'https://www.youtube.com/embed/' + this.dataset.videoId + '?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1';
+			const iframe = document.createElement('iframe');
+			iframe.setAttribute('frameborder', '0');
+			iframe.setAttribute('allowfullscreen', '');
+			iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+			iframe.setAttribute('src', src);
+
+			if (videoLightboxEnabled) {
 				$vWrapper.empty().append(iframe);
-				$vOverlay.addClass('lb-active');
-				$('body').css('overflow', 'hidden');
+				videoLightbox.open();
 			} else {
-				// Mobile: replace thumbnail inline
-				this.innerHTML = "";
-				this.style.cursor = "default";
+				this.innerHTML = '';
+				this.style.cursor = 'default';
 				this.appendChild(iframe);
 			}
-        });
-    }
+		});
+	}
 });

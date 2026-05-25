@@ -26,7 +26,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/flexslider.css" rel="stylesheet" >
     <link href="css/styles.css" rel="stylesheet">
-    <link href="css/queries.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -82,7 +81,7 @@
 
     </head>
 
-    <body class="page-docus">
+    <body class="page-docus prestation-page">
       <header>
         <nav>
           <div class="container-fluid">
@@ -93,10 +92,10 @@
                     <li><a href="./index.html">Accueil<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                   
                     <li class="has-submenu">
-                      <a class="current">Prestations<span class="indicator"><i class="fa fa-angle-right"></i></span></a>
+                      <a class="current" aria-expanded="false">Prestations<span class="indicator"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="submenu">
                         <li><a href="./clipsentreprises.html" class="prestations">Clips d'entreprise<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
-                        <li><a class="current prestations">Reportages et documentaires<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
+                        <li><a class="current prestations" aria-current="page">Reportages et documentaires<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                         <li><a href="./shootingsphotos.html" class="prestations">Shootings photo<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                         <li><a href="./clipsmusicaux.html" class="prestations">Clips musicaux<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                         <li><a href="./drone.html" class="prestations">Drone<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
@@ -131,15 +130,17 @@
             
             <div class="row">
               <div class="col-md-8 col-md-offset-2 text-center inner">
-                <h1 class="animated fadeInDown" style="font-size:33px">Reportages et <br> Documentaires</h1>
+                <h1 class="animated fadeInDown">Reportages et <br> Documentaires</h1>
                 <hr>
-                <p class="animated fadeInUp delay-05s h3" style="font-size:18px">Timothé IMBERT </p>
+                <p class="animated fadeInUp delay-05s h3 hero-subtitle">Timothé IMBERT </p>
                 <p class="animated fadeInUp delay-05s h3" id="videaste">Vidéaste &#8226; Photographe</p>
               </div>
             </div>
           </div>
         </section>
       </header>
+
+      <main>
 
 
       <section class="portfolio text-center section-padding" id="portfolio">
@@ -207,7 +208,7 @@
         </div>
       </section>
 
-      <section class="portfolio text-center section-padding" id="portfolio">
+      <section class="portfolio text-center section-padding" id="tarifs">
         <div class="container">
           <div class="row">
             <div class="col-md-8 col-md-offset-2 wp5">
@@ -284,13 +285,15 @@
         </div>
       </section>
       
-      <br>
+
+
+      </main>
 
       <footer>
         <nav class="text-center">
           <ul>
-            <a href="https://www.youtube.com/c/MOTIMPictures" target="_blank"> <span class="iconify" data-icon="ant-design:youtube-filled" data-width="30" data-height="30" color="grey"></span></a>
-            <a href="https://www.instagram.com/motim.pictures/" target="_blank" ><span class="iconify" data-icon="akar-icons:instagram-fill" data-width="30" data-height="30" color="grey"></span></a>
+            <li><a href="https://www.youtube.com/c/MOTIMPictures" target="_blank"><span class="iconify" data-icon="ant-design:youtube-filled" data-width="30" data-height="30" color="grey"></span></a></li>
+            <li><a href="https://www.instagram.com/motim.pictures/" target="_blank"><span class="iconify" data-icon="akar-icons:instagram-fill" data-width="30" data-height="30" color="grey"></span></a></li>
           </ul>
         </nav>
         <p>

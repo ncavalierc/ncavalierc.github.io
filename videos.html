@@ -26,7 +26,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/flexslider.css" rel="stylesheet" >
     <link href="css/styles.css" rel="stylesheet">
-    <link href="css/queries.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -92,7 +91,7 @@
                     <li><a href="./index.html">Accueil<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                   
                     <li class="has-submenu">
-                      <a>Prestations<span class="indicator"><i class="fa fa-angle-right"></i></span></a>
+                      <a aria-expanded="false">Prestations<span class="indicator"><i class="fa fa-angle-right"></i></span></a>
                       <ul class="submenu">
                         <li><a href="./clipsentreprises.html" class="prestations">Clips d'entreprise<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                         <li><a href="./reportagesetdocus.html" class="prestations">Reportages et documentaires<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
@@ -103,7 +102,7 @@
                       </ul>
                     </li>
                   
-                    <li><a class="current">Vidéos<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
+                    <li><a class="current" aria-current="page">Vidéos<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                     <li><a href="./photos.html">Photos<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                     <li><a href="./index.html#actu">Actualités<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
                     <li><a href="./apropos.html">À propos<span class="indicator"><i class="fa fa-angle-right"></i></span></a></li>
@@ -127,6 +126,8 @@
           </div>
         </section>
       </header>
+
+      <main>
 
       
 
@@ -239,11 +240,13 @@
       </section>
 
 
+      </main>
+
       <footer>
         <nav class="text-center">
           <ul>
-            <a href="https://www.youtube.com/c/MOTIMPictures" target="_blank"> <span class="iconify" data-icon="ant-design:youtube-filled" data-width="30" data-height="30" color="grey"></span></a>
-            <a href="https://www.instagram.com/motim.pictures/" target="_blank" ><span class="iconify" data-icon="akar-icons:instagram-fill" data-width="30" data-height="30" color="grey"></span></a>
+            <li><a href="https://www.youtube.com/c/MOTIMPictures" target="_blank"><span class="iconify" data-icon="ant-design:youtube-filled" data-width="30" data-height="30" color="grey"></span></a></li>
+            <li><a href="https://www.instagram.com/motim.pictures/" target="_blank"><span class="iconify" data-icon="akar-icons:instagram-fill" data-width="30" data-height="30" color="grey"></span></a></li>
           </ul>
         </nav>
         <p>
