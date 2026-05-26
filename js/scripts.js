@@ -83,6 +83,18 @@ $(document).ready(function() {
 		});
 	}
 
+	if ($('body').hasClass('prestation-page') && width >= 768) {
+		const $img = $('<img id="lightbox-img" alt="">');
+		const lb = createLightbox({ content: $img });
+
+		$('.description-grid .effects .img').on('click', function(e) {
+			e.preventDefault();
+			const $i = $(this).find('img');
+			$img.attr({ src: $i.attr('src'), alt: $i.attr('alt') });
+			lb.open();
+		});
+	}
+
 });
 
 
