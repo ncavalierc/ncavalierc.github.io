@@ -70,6 +70,45 @@ $(document).ready(function() {
 			const titre = document.getElementById('titre');
 			if (titre) titre.textContent = 'Pictures';
 		}
+
+		var ytScript = document.createElement('script');
+		ytScript.src = 'https://www.youtube.com/iframe_api';
+		document.head.appendChild(ytScript);
+
+		window.onYouTubeIframeAPIReady = function() {
+			new YT.Player('hero-video-container', {
+				videoId: 'cEM_bdi8SYE',
+				playerVars: {
+					start: 14,
+					autoplay: 1,
+					mute: 1,
+					controls: 0,
+					disablekb: 1,
+					rel: 0,
+					modestbranding: 1,
+					iv_load_policy: 3,
+					playsinline: 1,
+					vq: 'hd1080'
+				},
+				events: {
+					onReady: function(e) {
+						e.target.playVideo();
+						setTimeout(function() {
+							var overlay = document.getElementById('hero-overlay');
+							var inner = document.getElementById('hero-inner');
+							if (overlay) overlay.style.opacity = '0';
+							if (inner) inner.style.opacity = '0';
+						}, 300);
+					},
+					onStateChange: function(e) {
+						if (e.data === 0) {
+							e.target.seekTo(14, true);
+							e.target.playVideo();
+						}
+					}
+				}
+			});
+		};
 	}
 
 	if (page === 'photos.html' && width >= 768) {
