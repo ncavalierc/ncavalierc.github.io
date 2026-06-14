@@ -92,7 +92,10 @@ $(document).ready(function() {
 				},
 				events: {
 					onReady: function(e) {
-						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+						var iframe = e.target.getIframe();
+						iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+						// Keep iframe invisible until YouTube's play indicator has gone
+						iframe.style.visibility = 'hidden';
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
 						// Poll to seek back before end so end screen never appears
@@ -105,18 +108,18 @@ $(document).ready(function() {
 						}, 500);
 					},
 					onStateChange: function(e) {
-						// Start fade only once video is confirmed playing — keeps
-						// overlay black during buffering so YouTube UI never flashes
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
+							// Wait 800ms for YouTube's centered play indicator to disappear,
+							// then reveal the video and immediately start the fade
 							setTimeout(function() {
+								e.target.getIframe().style.visibility = 'visible';
 								var overlay = document.getElementById('hero-overlay');
 								var inner = document.getElementById('hero-inner');
 								if (overlay) overlay.style.opacity = '0';
 								if (inner) inner.style.opacity = '0';
-							}, 2500);
+							}, 800);
 						}
-						// Fallback: if ENDED fires despite polling, loop from 14s
 						if (e.data === 0) {
 							e.target.seekTo(13, true);
 							e.target.playVideo();
