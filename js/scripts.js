@@ -92,7 +92,10 @@ $(document).ready(function() {
 				},
 				events: {
 					onReady: function(e) {
-						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+						var iframe = e.target.getIframe();
+						iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+						iframe.style.opacity = '0';
+						iframe.style.transition = 'opacity 1.2s ease';
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
 
@@ -103,30 +106,31 @@ $(document).ready(function() {
 							var current = e.target.getCurrentTime();
 							if (duration > 0 && current >= duration - 1.5 && !looping) {
 								looping = true;
-								var ov = document.getElementById('hero-overlay');
-								if (ov) { ov.style.transition = 'opacity 0.4s ease'; ov.style.opacity = '1'; }
+								iframe.style.transition = 'opacity 0.5s ease';
+								iframe.style.opacity = '0';
 								setTimeout(function() {
 									e.target.seekTo(11, true);
 									setTimeout(function() {
-										if (ov) { ov.style.transition = 'opacity 1.2s ease'; ov.style.opacity = '0'; }
+										iframe.style.transition = 'opacity 1.2s ease';
+										iframe.style.opacity = '1';
 										looping = false;
 									}, 1500);
-								}, 500);
+								}, 600);
 							}
 						}, 500);
 					},
 					onStateChange: function(e) {
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
-							// Video plays silently from t=11 under the opaque overlay.
-							// After 1.5s the indicator is gone — fade overlay and text together.
+							// Video plays invisibly from t=11. After 2s the play indicator
+							// is long gone — fade video in and text out simultaneously.
 							setTimeout(function() {
-								var overlay = document.getElementById('hero-overlay');
+								var iframe = e.target.getIframe();
 								var inner = document.getElementById('hero-inner');
-								if (overlay) overlay.style.opacity = '0';
+								iframe.style.opacity = '1';
 								if (inner) inner.style.opacity = '0';
 								e.target._revealed = true;
-							}, 1500);
+							}, 2000);
 						}
 						if (e.data === 0) {
 							e.target.seekTo(11, true);

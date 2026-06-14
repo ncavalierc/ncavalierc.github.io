@@ -229,7 +229,7 @@ Hero
 ========================================================================== */
 .hero { background: url('../img/DSC_8900_dark2.webp') no-repeat center center; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; padding: 45px 0 300px 0; height: auto; position: relative; overflow: hidden; }
 #hero-video-container { position: absolute; top: 50%; left: 50%; z-index: 0; pointer-events: none; /* Cover formula: iframe IS the container after YT API replaces the div */ width: max(100%, calc(100vh * 16 / 9)); height: max(100%, calc(100vw * 9 / 16)); /* Scale up 1.35x to crop encoded letterbox bars (2.39:1 content in 16:9) */ transform: translate(-50%, -50%) scale(1.35); }
-#hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 100; transition: opacity 1.2s ease; will-change: opacity; transform: translateZ(0); }
+#hero-overlay { display: none; }
 #hero-inner { position: relative; z-index: 2; transition: opacity 1.2s ease; }
 .hero .container { position: relative; z-index: 200; }
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 10px; color:white}
