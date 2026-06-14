@@ -79,7 +79,7 @@ $(document).ready(function() {
 			new YT.Player('hero-video-container', {
 				videoId: 'cEM_bdi8SYE',
 				playerVars: {
-					start: 11,
+					start: 12,
 					autoplay: 1,
 					mute: 1,
 					controls: 0,
@@ -102,12 +102,12 @@ $(document).ready(function() {
 							if (!e.target._revealed) return;
 							var duration = e.target.getDuration();
 							var current = e.target.getCurrentTime();
-							if (duration > 0 && current >= duration - 1.5 && !looping) {
+							if (current >= 175 && !looping) {
 								looping = true;
 								vc.style.transition = 'opacity 0.5s ease';
 								vc.style.opacity = '0';
 								setTimeout(function() {
-									e.target.seekTo(11, true);
+									e.target.seekTo(12, true);
 									setTimeout(function() {
 										vc.style.transition = 'opacity 1.2s ease';
 										vc.style.opacity = '1';
@@ -129,7 +129,7 @@ $(document).ready(function() {
 							}, 2000);
 						}
 						if (e.data === 0) {
-							e.target.seekTo(11, true);
+							e.target.seekTo(12, true);
 							e.target.playVideo();
 						}
 					}
