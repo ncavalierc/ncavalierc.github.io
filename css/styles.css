@@ -308,8 +308,10 @@ Contact
 .page-contact #contact { width: 100%; height: auto !important; padding: 40px 0; }
 #mail { margin-bottom: 20px; }
 #instagram { margin-bottom: 40px; }
-#calendly-container .calendly-inline-widget { min-width: 320px; height: 700px; }
-@media (max-width: 767px) { #calendly-container .calendly-inline-widget { height: 1000px; } }
+#calendly-container { padding: 0; }
+#calendly-container .calendly-inline-widget { min-width: 320px; height: 900px; border: none !important; overflow: hidden !important; }
+#calendly-container .calendly-inline-widget iframe { border: none !important; }
+@media (max-width: 767px) { #calendly-container .calendly-inline-widget { height: 1150px; } }
 .contact .iconify { color: white; }
 .contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
 .contact p a { color: #ccc; text-decoration: none; }
