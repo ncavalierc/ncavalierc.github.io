@@ -101,8 +101,17 @@ $(document).ready(function() {
 							if (overlay) overlay.style.opacity = '0';
 							if (inner) inner.style.opacity = '0';
 						}, 4000);
+						// Poll to seek back before end so end screen never appears
+						setInterval(function() {
+							var duration = e.target.getDuration();
+							var current = e.target.getCurrentTime();
+							if (duration > 0 && current >= duration - 1) {
+								e.target.seekTo(14, true);
+							}
+						}, 500);
 					},
 					onStateChange: function(e) {
+						// Fallback: if ENDED fires despite polling, loop from 14s
 						if (e.data === 0) {
 							e.target.seekTo(14, true);
 							e.target.playVideo();
