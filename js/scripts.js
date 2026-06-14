@@ -92,13 +92,11 @@ $(document).ready(function() {
 				},
 				events: {
 					onReady: function(e) {
-						var iframe = e.target.getIframe();
-						iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-						iframe.style.opacity = '0';
-						iframe.style.transition = 'opacity 1.2s ease';
+						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
 
+						var vc = document.getElementById('hero-video-container');
 						var looping = false;
 						setInterval(function() {
 							if (!e.target._revealed) return;
@@ -106,13 +104,13 @@ $(document).ready(function() {
 							var current = e.target.getCurrentTime();
 							if (duration > 0 && current >= duration - 1.5 && !looping) {
 								looping = true;
-								iframe.style.transition = 'opacity 0.5s ease';
-								iframe.style.opacity = '0';
+								vc.style.transition = 'opacity 0.5s ease';
+								vc.style.opacity = '0';
 								setTimeout(function() {
 									e.target.seekTo(11, true);
 									setTimeout(function() {
-										iframe.style.transition = 'opacity 1.2s ease';
-										iframe.style.opacity = '1';
+										vc.style.transition = 'opacity 1.2s ease';
+										vc.style.opacity = '1';
 										looping = false;
 									}, 1500);
 								}, 600);
@@ -122,13 +120,11 @@ $(document).ready(function() {
 					onStateChange: function(e) {
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
-							// Video plays invisibly from t=11. After 2s the play indicator
-							// is long gone — fade video in and text out simultaneously.
 							setTimeout(function() {
-								var iframe = e.target.getIframe();
+								var vc = document.getElementById('hero-video-container');
 								var overlay = document.getElementById('hero-overlay');
 								var inner = document.getElementById('hero-inner');
-								iframe.style.opacity = '1';
+								if (vc) vc.style.opacity = '1';
 								if (overlay) overlay.style.opacity = '0';
 								if (inner) inner.style.opacity = '0';
 								e.target._revealed = true;
