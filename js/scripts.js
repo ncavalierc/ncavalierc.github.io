@@ -95,30 +95,37 @@ $(document).ready(function() {
 						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
-						// Poll to seek back before end so end screen never appears
+
+						var looping = false;
 						setInterval(function() {
+							if (!e.target._revealed) return;
 							var duration = e.target.getDuration();
 							var current = e.target.getCurrentTime();
-							if (duration > 0 && current >= duration - 1) {
-								e.target.seekTo(11, true);
+							if (duration > 0 && current >= duration - 1.5 && !looping) {
+								looping = true;
+								var ov = document.getElementById('hero-overlay');
+								if (ov) { ov.style.transition = 'opacity 0.4s ease'; ov.style.opacity = '1'; }
+								setTimeout(function() {
+									e.target.seekTo(11, true);
+									setTimeout(function() {
+										if (ov) { ov.style.transition = 'opacity 1.2s ease'; ov.style.opacity = '0'; }
+										looping = false;
+									}, 1500);
+								}, 500);
 							}
 						}, 500);
 					},
 					onStateChange: function(e) {
-						// Fade as soon as video is confirmed playing.
-						// The overlay (z-index 100) keeps YouTube's play indicator hidden
-						// during the first ~0.5s of the 1.5s fade transition.
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
-							// Fade text immediately
-							var inner = document.getElementById('hero-inner');
-							if (inner) inner.style.opacity = '0';
-							// Wait 1.5s for YouTube's play indicator to disappear
-							// (video plays silently from t=11 under the opaque overlay),
-							// then fade the overlay — no indicator can flash through
+							// Video plays silently from t=11 under the opaque overlay.
+							// After 1.5s the indicator is gone — fade overlay and text together.
 							setTimeout(function() {
 								var overlay = document.getElementById('hero-overlay');
+								var inner = document.getElementById('hero-inner');
 								if (overlay) overlay.style.opacity = '0';
+								if (inner) inner.style.opacity = '0';
+								e.target._revealed = true;
 							}, 1500);
 						}
 						if (e.data === 0) {
