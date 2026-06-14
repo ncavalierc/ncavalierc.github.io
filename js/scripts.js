@@ -88,11 +88,12 @@ $(document).ready(function() {
 					modestbranding: 1,
 					iv_load_policy: 3,
 					playsinline: 1,
-					vq: 'hd1080'
+					vq: 'hd1440'
 				},
 				events: {
 					onReady: function(e) {
 						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
 						setTimeout(function() {
 							var overlay = document.getElementById('hero-overlay');
