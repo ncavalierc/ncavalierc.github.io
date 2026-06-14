@@ -126,8 +126,10 @@ $(document).ready(function() {
 							// is long gone — fade video in and text out simultaneously.
 							setTimeout(function() {
 								var iframe = e.target.getIframe();
+								var overlay = document.getElementById('hero-overlay');
 								var inner = document.getElementById('hero-inner');
 								iframe.style.opacity = '1';
+								if (overlay) overlay.style.opacity = '0';
 								if (inner) inner.style.opacity = '0';
 								e.target._revealed = true;
 							}, 2000);
