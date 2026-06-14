@@ -79,7 +79,7 @@ $(document).ready(function() {
 			new YT.Player('hero-video-container', {
 				videoId: 'cEM_bdi8SYE',
 				playerVars: {
-					start: 14,
+					start: 13,
 					autoplay: 1,
 					mute: 1,
 					controls: 0,
@@ -100,7 +100,7 @@ $(document).ready(function() {
 							var duration = e.target.getDuration();
 							var current = e.target.getCurrentTime();
 							if (duration > 0 && current >= duration - 1) {
-								e.target.seekTo(14, true);
+								e.target.seekTo(13, true);
 							}
 						}, 500);
 					},
@@ -114,11 +114,11 @@ $(document).ready(function() {
 								var inner = document.getElementById('hero-inner');
 								if (overlay) overlay.style.opacity = '0';
 								if (inner) inner.style.opacity = '0';
-							}, 4000);
+							}, 2500);
 						}
 						// Fallback: if ENDED fires despite polling, loop from 14s
 						if (e.data === 0) {
-							e.target.seekTo(14, true);
+							e.target.seekTo(13, true);
 							e.target.playVideo();
 						}
 					}
