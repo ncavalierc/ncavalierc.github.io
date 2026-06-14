@@ -92,13 +92,14 @@ $(document).ready(function() {
 				},
 				events: {
 					onReady: function(e) {
+						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 						e.target.playVideo();
 						setTimeout(function() {
 							var overlay = document.getElementById('hero-overlay');
 							var inner = document.getElementById('hero-inner');
 							if (overlay) overlay.style.opacity = '0';
 							if (inner) inner.style.opacity = '0';
-						}, 300);
+						}, 4000);
 					},
 					onStateChange: function(e) {
 						if (e.data === 0) {
@@ -234,6 +235,7 @@ $(function() {
 			iframe.setAttribute('frameborder', '0');
 			iframe.setAttribute('allowfullscreen', '');
 			iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
+			iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 			iframe.setAttribute('src', src);
 
 			if (videoLightboxEnabled) {
