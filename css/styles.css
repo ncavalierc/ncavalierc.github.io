@@ -306,7 +306,10 @@ Contact
 .page-contact { min-height: 100vh; display: flex; flex-direction: column; }
 .page-contact main { flex: 1; display: flex; align-items: center; justify-content: center; }
 .page-contact #contact { width: 100%; height: auto !important; padding: 40px 0; }
-#mail { margin-bottom: 50px; }
+#mail { margin-bottom: 20px; }
+#instagram { margin-bottom: 40px; }
+#calendly-container .calendly-inline-widget { min-width: 320px; height: 700px; }
+@media (max-width: 767px) { #calendly-container .calendly-inline-widget { height: 1000px; } }
 .contact .iconify { color: white; }
 .contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
 .contact p a { color: #ccc; text-decoration: none; }
