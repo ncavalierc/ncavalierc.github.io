@@ -190,7 +190,7 @@ $(function() {
 		});
 
 		container.addEventListener('click', function() {
-			const src = 'https://www.youtube-nocookie.com/embed/' + this.dataset.videoId + '?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1';
+			const src = 'https://www.youtube-nocookie.com/embed/' + this.dataset.videoId + '?rel=0&autoplay=1&modestbranding=1&vq=hd1080&controls=1&origin=' + encodeURIComponent(window.location.origin);
 			const iframe = document.createElement('iframe');
 			iframe.setAttribute('frameborder', '0');
 			iframe.setAttribute('allowfullscreen', '');
