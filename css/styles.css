@@ -232,13 +232,13 @@ Hero
 .hero h1 span { display: inline-block; }
 .hero p { letter-spacing: 1px; color:white}
 hr { width: 50%; }
-.hero img {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px);}
+.hero img {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px); margin-top: 10px; margin-left: 10px;}
 
 /* ==========================================================================
 header
 ========================================================================== */
 .header { background-color: #171717; padding: 45px 0 50px 0;}
-#logo-header {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px);}
+#logo-header {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px); margin-top: 10px; margin-left: 10px;}
 .prestations{
     padding-left:40px
 }
