@@ -110,10 +110,15 @@ $(document).ready(function() {
 						// during the first ~0.5s of the 1.5s fade transition.
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
-							var overlay = document.getElementById('hero-overlay');
+							// Fade text immediately
 							var inner = document.getElementById('hero-inner');
-							if (overlay) overlay.style.opacity = '0';
 							if (inner) inner.style.opacity = '0';
+							// Delay overlay fade by 1s so YouTube's play indicator
+							// is fully gone before the overlay becomes semi-transparent
+							setTimeout(function() {
+								var overlay = document.getElementById('hero-overlay');
+								if (overlay) overlay.style.opacity = '0';
+							}, 1000);
 						}
 						if (e.data === 0) {
 							e.target.seekTo(13, true);
