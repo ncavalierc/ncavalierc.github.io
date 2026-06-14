@@ -79,7 +79,7 @@ $(document).ready(function() {
 			new YT.Player('hero-video-container', {
 				videoId: 'cEM_bdi8SYE',
 				playerVars: {
-					start: 13,
+					start: 11,
 					autoplay: 1,
 					mute: 1,
 					controls: 0,
@@ -100,7 +100,7 @@ $(document).ready(function() {
 							var duration = e.target.getDuration();
 							var current = e.target.getCurrentTime();
 							if (duration > 0 && current >= duration - 1) {
-								e.target.seekTo(13, true);
+								e.target.seekTo(11, true);
 							}
 						}, 500);
 					},
@@ -113,15 +113,16 @@ $(document).ready(function() {
 							// Fade text immediately
 							var inner = document.getElementById('hero-inner');
 							if (inner) inner.style.opacity = '0';
-							// Delay overlay fade by 1s so YouTube's play indicator
-							// is fully gone before the overlay becomes semi-transparent
+							// Wait 1.5s for YouTube's play indicator to disappear
+							// (video plays silently from t=11 under the opaque overlay),
+							// then fade the overlay — no indicator can flash through
 							setTimeout(function() {
 								var overlay = document.getElementById('hero-overlay');
 								if (overlay) overlay.style.opacity = '0';
-							}, 1000);
+							}, 1500);
 						}
 						if (e.data === 0) {
-							e.target.seekTo(13, true);
+							e.target.seekTo(11, true);
 							e.target.playVideo();
 						}
 					}
