@@ -92,10 +92,7 @@ $(document).ready(function() {
 				},
 				events: {
 					onReady: function(e) {
-						var iframe = e.target.getIframe();
-						iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-						// Keep iframe invisible until YouTube's play indicator has gone
-						iframe.style.visibility = 'hidden';
+						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
 						// Poll to seek back before end so end screen never appears
@@ -108,17 +105,15 @@ $(document).ready(function() {
 						}, 500);
 					},
 					onStateChange: function(e) {
+						// Fade as soon as video is confirmed playing.
+						// The overlay (z-index 100) keeps YouTube's play indicator hidden
+						// during the first ~0.5s of the 1.5s fade transition.
 						if (e.data === 1 && !e.target._fadeDone) {
 							e.target._fadeDone = true;
-							// Wait 800ms for YouTube's centered play indicator to disappear,
-							// then reveal the video and immediately start the fade
-							setTimeout(function() {
-								e.target.getIframe().style.visibility = 'visible';
-								var overlay = document.getElementById('hero-overlay');
-								var inner = document.getElementById('hero-inner');
-								if (overlay) overlay.style.opacity = '0';
-								if (inner) inner.style.opacity = '0';
-							}, 800);
+							var overlay = document.getElementById('hero-overlay');
+							var inner = document.getElementById('hero-inner');
+							if (overlay) overlay.style.opacity = '0';
+							if (inner) inner.style.opacity = '0';
 						}
 						if (e.data === 0) {
 							e.target.seekTo(13, true);
