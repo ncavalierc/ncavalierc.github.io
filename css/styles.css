@@ -299,8 +299,9 @@ Vidéos
 /* ==========================================================================
 Contact
 ========================================================================== */
-#contact { display: flex; justify-content: center;align-items: center; }
-.page-contact #contact { padding: 60px 0; height: auto !important; }
+.page-contact { min-height: 100vh; display: flex; flex-direction: column; }
+.page-contact main { flex: 1; display: flex; align-items: center; justify-content: center; }
+.page-contact #contact { width: 100%; height: auto !important; padding: 40px 0; }
 #mail { margin-bottom: 50px; }
 .contact .iconify { color: white; }
 .contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
@@ -333,7 +334,7 @@ ul.slides li { margin-bottom: 20px; }
 Waypoints
 ========================================================================== */
 .wp1, .wp2, .wp3, .wp4, .wp5 { visibility: hidden; }
-.fadeInUp, .fadeInDown { visibility: visible; }
+.fadeInUp, .fadeInDown, .fadeInLeft { visibility: visible; }
 header .fadeInUp, header .fadeInDown { text-shadow: 2px 1px #000000; }
 .delay-05s { animation-delay: 0.5s; -webkit-animation-delay: 0.5s; }
 
