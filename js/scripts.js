@@ -122,10 +122,8 @@ $(document).ready(function() {
 							e.target._fadeDone = true;
 							setTimeout(function() {
 								var vc = document.getElementById('hero-video-container');
-								var overlay = document.getElementById('hero-overlay');
 								var inner = document.getElementById('hero-inner');
 								if (vc) vc.style.opacity = '1';
-								if (overlay) overlay.style.opacity = '0';
 								if (inner) inner.style.opacity = '0';
 								e.target._revealed = true;
 							}, 2000);
