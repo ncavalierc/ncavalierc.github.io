@@ -95,12 +95,6 @@ $(document).ready(function() {
 						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
 						e.target.setPlaybackQuality('hd1440');
 						e.target.playVideo();
-						setTimeout(function() {
-							var overlay = document.getElementById('hero-overlay');
-							var inner = document.getElementById('hero-inner');
-							if (overlay) overlay.style.opacity = '0';
-							if (inner) inner.style.opacity = '0';
-						}, 4000);
 						// Poll to seek back before end so end screen never appears
 						setInterval(function() {
 							var duration = e.target.getDuration();
@@ -111,6 +105,17 @@ $(document).ready(function() {
 						}, 500);
 					},
 					onStateChange: function(e) {
+						// Start fade only once video is confirmed playing — keeps
+						// overlay black during buffering so YouTube UI never flashes
+						if (e.data === 1 && !e.target._fadeDone) {
+							e.target._fadeDone = true;
+							setTimeout(function() {
+								var overlay = document.getElementById('hero-overlay');
+								var inner = document.getElementById('hero-inner');
+								if (overlay) overlay.style.opacity = '0';
+								if (inner) inner.style.opacity = '0';
+							}, 4000);
+						}
 						// Fallback: if ENDED fires despite polling, loop from 14s
 						if (e.data === 0) {
 							e.target.seekTo(14, true);
