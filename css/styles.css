@@ -274,7 +274,8 @@ Portfolio
 #tarifs,
 #supplement,
 #actualites,
-#confiance-section { padding-top: 30px; padding-bottom: 0; margin-bottom: -20px; background-color: #171717; }
+#confiance-section { padding-top: 70px; padding-bottom: 0; margin-bottom: 0; background-color: #171717; }
+.confiance ul.slides li:last-child { margin-bottom: 0; }
 /* ==========================================================================
 Photos
 ========================================================================== */
@@ -299,25 +300,31 @@ Vidéos
 Contact
 ========================================================================== */
 #contact { display: flex; justify-content: center;align-items: center; }
-#mail {margin-bottom: 75px;}
-#mail img {width : 200px;}
-#phone img {width : 200px; }
+.page-contact #contact { padding: 60px 0; height: auto !important; }
+#mail { margin-bottom: 50px; }
+.contact .iconify { color: white; }
+.contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
+.contact p a { color: #ccc; text-decoration: none; }
+.contact p a:hover { color: white; text-decoration: underline; }
 .photos h1 {font-size: 25px;}
 /* ==========================================================================
 Footer
 ========================================================================== */
-footer { background-color: #171717; padding: 20px 0 20px; }
-footer h4 { color: white; font-size: 7px; }
-footer ul { margin: auto; }
+footer { background-color: #171717; padding: 16px 30px; display: flex; align-items: center; }
+footer nav { flex: 1; }
+footer ul { margin: 0; padding: 0; display: flex; align-items: center; gap: 4px; }
 footer nav ul li { display: inline-block; border: none; padding: 0; }
 footer nav ul li a { display: inline-block; padding: 0; }
-footer a { margin-top: 10px; margin-left: 10px; margin-right: 10px; }
-footer span {color : white}
+footer a { display: inline-flex; align-items: center; margin: 0 6px; }
+footer span { color: white; }
 #copyright { color: grey; }
 .hero-subtitle { font-size: 18px; }
-footer a:hover {filter: brightness(200%); }
-.footer { left: 0; bottom: 0; width: 100%; background-color: #171717;}
-footer p {text-align: center;}
+footer a:hover { filter: brightness(200%); }
+.footer { left: 0; bottom: 0; width: 100%; background-color: #171717; }
+footer p { flex: 1; margin: 0; color: grey; font-size: 14px; text-align: center; }
+.footer-right { flex: 1; display: flex; justify-content: flex-end; }
+.footer-contact { border: 1px solid #888; color: #ccc; background: #2e2e2e; padding: 6px 16px; font-size: 14px; border-radius: 3px; text-decoration: none; white-space: nowrap; transition: background 0.2s, color 0.2s; margin: 0; }
+.footer-contact:hover { background: #444; color: white; filter: none; }
 /* ==========================================================================
 FlexSlider Custom CSS
 ========================================================================== */
@@ -421,7 +428,8 @@ h3{
 }
 
 .confiance .photo .img img {
-    height: 180px;
+    max-height: 180px;
+    height: auto;
     width: auto;
     max-width: 100%;
     transform: none;
@@ -440,6 +448,15 @@ h3{
         display: block;
         margin: 0 auto;
         width: auto;
+    }
+}
+
+@media screen and (min-width:992px) {
+    .confiance {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        overflow: hidden;
     }
 }
 
@@ -571,6 +588,20 @@ Lightbox (photos page only)
     transform: scale(1.12) rotate(90deg);
     background: #e74c3c;
     color: #ffffff;
+}
+
+/* ==========================================================================
+Navicon — consistent spacing on all screen sizes
+========================================================================== */
+.navicon {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    box-sizing: border-box;
+    padding-left: 20px;
+    margin-top: -10px;
+}
+#nav-toggle {
+    right: 30px;
 }
 
 /* ==========================================================================
