@@ -58,12 +58,6 @@ $(document).ready(function() {
 		}
 	});
 
-	if (page === 'contact.html') {
-		const contact = document.getElementById('contact');
-		if (contact) {
-			contact.style.height = (height - NAV_HEIGHT - FOOTER_HEIGHT) + 'px';
-		}
-	}
 
 	if (page === 'index.html' || page === '') {
 		if (width < MOBILE_BREAKPOINT_PX) {
@@ -71,71 +65,14 @@ $(document).ready(function() {
 			if (titre) titre.textContent = 'Pictures';
 		}
 
-		var ytScript = document.createElement('script');
-		ytScript.src = 'https://www.youtube.com/iframe_api';
-		document.head.appendChild(ytScript);
-
-		window.onYouTubeIframeAPIReady = function() {
-			new YT.Player('hero-video-container', {
-				videoId: 'cEM_bdi8SYE',
-				playerVars: {
-					start: 12,
-					autoplay: 1,
-					mute: 1,
-					controls: 0,
-					disablekb: 1,
-					rel: 0,
-					modestbranding: 1,
-					iv_load_policy: 3,
-					playsinline: 1,
-					vq: 'hd1440'
-				},
-				events: {
-					onReady: function(e) {
-						e.target.getIframe().setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-						e.target.setPlaybackQuality('hd1440');
-						e.target.playVideo();
-
-						var vc = document.getElementById('hero-video-container');
-						var looping = false;
-						setInterval(function() {
-							if (!e.target._revealed) return;
-							var duration = e.target.getDuration();
-							var current = e.target.getCurrentTime();
-							if (current >= 175 && !looping) {
-								looping = true;
-								vc.style.transition = 'opacity 0.5s ease';
-								vc.style.opacity = '0';
-								setTimeout(function() {
-									e.target.seekTo(12, true);
-									setTimeout(function() {
-										vc.style.transition = 'opacity 1.2s ease';
-										vc.style.opacity = '1';
-										looping = false;
-									}, 1500);
-								}, 600);
-							}
-						}, 500);
-					},
-					onStateChange: function(e) {
-						if (e.data === 1 && !e.target._fadeDone) {
-							e.target._fadeDone = true;
-							setTimeout(function() {
-								var vc = document.getElementById('hero-video-container');
-								var inner = document.getElementById('hero-inner');
-								if (vc) vc.style.opacity = '1';
-								if (inner) inner.style.opacity = '0';
-								e.target._revealed = true;
-							}, 2000);
-						}
-						if (e.data === 0) {
-							e.target.seekTo(12, true);
-							e.target.playVideo();
-						}
-					}
-				}
-			});
-		};
+		var heroVideo = document.getElementById('hero-video');
+		if (heroVideo) {
+			heroVideo.play().catch(function() {});
+			// Text stays visible; fade the video in from black after 1.5s.
+			setTimeout(function() {
+				heroVideo.classList.add('is-visible');
+			}, 1500);
+		}
 	}
 
 	if (page === 'photos.html' && width >= 768) {

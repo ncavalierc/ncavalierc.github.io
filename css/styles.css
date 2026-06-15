@@ -178,7 +178,7 @@ h2 { font-size: 15px; color: #DBDBDB; text-transform: uppercase; font-weight: bo
 h2::after { content: " "; border: solid 2px #54684F; display: block; width: 35px; margin: 25px auto; }
 h3 { font-size: 15px; color: #DBDBDB; font-weight: bold; }
 h3::after { content: " "; border: solid 2px #54684F; display: block; width: 35px; margin: 25px auto; }
-.section-padding { padding: 90px 0 100px } 
+.section-padding { padding: 60px 0 100px } 
 .inner { padding-top: 170px; }
 /* ==========================================================================
 Navigation
@@ -228,15 +228,25 @@ nav ul li a:hover, nav ul li a:focus { text-decoration: none; color: rgba(255, 2
 Hero
 ========================================================================== */
 .hero { background: #000; padding: 45px 0 300px 0; height: auto; position: relative; overflow: hidden; }
-#hero-video-container { position: absolute; top: 50%; left: 50%; z-index: 0; pointer-events: none; width: max(100%, calc(100vh * 16 / 9)); height: max(100%, calc(100vw * 9 / 16)); transform: translate(-50%, -50%) scale(1.35); opacity: 0; transition: opacity 1.2s ease; }
-#hero-overlay { display: none; }
-#hero-inner { position: relative; z-index: 2; transition: opacity 1.2s ease; }
+#hero-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; background: #000; }
+#hero-video.is-visible { opacity: 1; }
+#hero-inner { position: relative; z-index: 2; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6); }
 .hero .container { position: relative; z-index: 200; }
 .hero h1 { font-size: 40px; letter-spacing: 12px; margin: 10px; color:white}
 .hero h1 span { display: inline-block; }
 .hero p { letter-spacing: 1px; color:white}
 hr { width: 50%; }
+.hero hr { filter: drop-shadow(0 1px 12px rgba(0, 0, 0, 0.6)); }
 .hero img {display:inline-block; width:200px; transform: translateY(-55px) translateX(-50px); margin-top: 10px; margin-left: 10px;}
+/* Shorter hero on mobile so the (much wider) video isn't zoomed/cropped so hard,
+   with the text vertically centered (logo pulled out of flow so it doesn't push it down) */
+@media screen and (max-width: 767px) {
+    .page-index .hero { padding: 45px 0; min-height: 62vh; display: flex; }
+    .page-index .hero .container { width: 100%; display: flex; flex-direction: column; }
+    .page-index .hero .container > .row:nth-child(2) { margin-top: auto; margin-bottom: auto; }
+    .page-index .hero .inner { padding-top: 0; }
+    .page-index .hero h1 span { display: block; }
+}
 
 /* ==========================================================================
 header
@@ -260,7 +270,7 @@ Portfolio
 .photos .img img,
 .videos .img img { width: -webkit-calc(100% + 40px); width: calc(100% + 40px); -webkit-transition: opacity 0.35s, -webkit-transform 0.35s; transition: opacity 0.35s, transform 0.35s; -moz-transition: opacity 0.35s, -moz-transform 0.35s; -o-transition: opacity 0.35s, -o-transform 0.35s; }
 .portfolio .img img { -webkit-transform: translate3d(-40px, 0, 0); transform: translate3d(-40px, 0, 0); -ms-transform: translate3d(-40px, 0, 0); }
-.portfolio h1 { margin-bottom: 50px; }
+.portfolio h1 { margin-top: 0; margin-bottom: 50px; }
 .description-grid { display: none; margin-top: 20px; }
 .description-grid .effects .img { height: 210px; margin-bottom: 0; }
 .description-grid .effects .img:nth-child(n) { margin-right: 0; }
@@ -309,9 +319,9 @@ Contact
 #mail { margin-bottom: 20px; }
 #instagram { margin-bottom: 40px; }
 #calendly-container { padding: 0; }
-#calendly-container .calendly-inline-widget { min-width: 320px; height: 900px; border: none !important; overflow: hidden !important; }
-#calendly-container .calendly-inline-widget iframe { border: none !important; }
-@media (max-width: 767px) { #calendly-container .calendly-inline-widget { height: 1150px; } }
+#calendly-container .calendly-inline-widget { min-width: 320px; min-height: 630px; border: none !important; }
+#calendly-container .calendly-inline-widget iframe { border: none !important; display: block; }
+@media (max-width: 767px) { #calendly-container .calendly-inline-widget { min-height: 900px; } }
 .contact .iconify { color: white; }
 .contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
 .contact p a { color: #ccc; text-decoration: none; }
