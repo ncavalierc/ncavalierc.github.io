@@ -27,6 +27,7 @@
     <link href="css/flexslider.css" rel="stylesheet" >
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/animate.css" rel="stylesheet">
+    <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script defer src="js/waypoints.min.js"></script>
@@ -138,8 +139,9 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-md-10 col-md-offset-1 col-xs-12" id="calendly-container">
-              <div class="calendly-inline-widget" data-url="https://calendly.com/motimproduction/30min?hide_gdpr_banner=1&background_color=171717&text_color=e3e3e3&primary_color=888888"></div>
+            <div class="col-md-10 col-md-offset-1 col-xs-12 wp1" id="booking-intro">
+              <h2>Un projet, parlons-en</h2>
+              <button type="button" id="booking-btn" onclick="Calendly.initPopupWidget({url:'https://calendly.com/motimproduction/30min?hide_gdpr_banner=1&background_color=171717&text_color=e3e3e3&primary_color=888888'});return false;">Réservez un créneau de 30&nbsp;min</button>
             </div>
           </div>
         </div>

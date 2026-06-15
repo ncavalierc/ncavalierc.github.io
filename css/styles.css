@@ -314,18 +314,50 @@ Vidéos
 Contact
 ========================================================================== */
 .page-contact { min-height: 100vh; display: flex; flex-direction: column; }
-.page-contact main { flex: 1; display: flex; align-items: center; justify-content: center; }
+/* padding-bottom compensates for the header being taller than the footer, so the
+   content lands on the true viewport centre (equal space above icon / below button). */
+.page-contact main { flex: 1; display: flex; align-items: center; justify-content: center; padding-bottom: 62px; }
 .page-contact #contact { width: 100%; height: auto !important; padding: 40px 0; }
 #mail { margin-bottom: 20px; }
 #instagram { margin-bottom: 40px; }
-#calendly-container { padding: 0; }
-#calendly-container .calendly-inline-widget { min-width: 320px; min-height: 630px; border: none !important; }
-#calendly-container .calendly-inline-widget iframe { border: none !important; display: block; }
-@media (max-width: 767px) { #calendly-container .calendly-inline-widget { min-height: 900px; } }
+/* Booking call-to-action: a native, on-brand button that opens Calendly in an
+   overlay popup (avoids the inline iframe's uncontrollable card/border/grey). */
+#booking-intro { margin-top: 10px; }
+#booking-intro h2 { color: #fff; font-size: 21px; margin: 0 0 16px; }
+#booking-btn {
+  display: inline-block;
+  padding: 12px 30px;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 15px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #888;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+#booking-btn:hover, #booking-btn:focus { background: #fff; color: #171717; border-color: #fff; outline: none; }
 .contact .iconify { color: white; }
-.contact p { color: #ccc; margin-top: 10px; font-size: 18px; }
+.contact p { color: #ccc; margin-top: 8px; font-size: 15px; }
 .contact p a { color: #ccc; text-decoration: none; }
 .contact p a:hover { color: white; text-decoration: underline; }
+
+/* Calendly popup: force a full-screen, fully opaque on-brand overlay so no part
+   of the page (header/logo) shows through at the top. */
+.calendly-overlay { background-color: #171717 !important; z-index: 100000 !important; }
+.calendly-overlay .calendly-popup {
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+.calendly-overlay .calendly-popup .calendly-popup-content { height: 100% !important; }
 .photos h1 {font-size: 25px;}
 /* ==========================================================================
 Footer
