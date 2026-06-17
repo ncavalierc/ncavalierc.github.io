@@ -528,6 +528,97 @@ h3{
 }
 
 /* ==========================================================================
+À propos
+========================================================================== */
+/* Match the space before the footer to the space above the first element (= padding-top),
+   instead of the wider default .section-padding bottom. */
+.apropos.section-padding { padding-bottom: 60px; }
+.apropos-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 60px;
+    align-items: start;
+    max-width: 1160px;
+    margin: 0 auto;
+}
+/* Always show the photo at its native 3:4 ratio (no stretch, no crop) and top-aligned
+   with the name, so it never gets squeezed when the text column wraps tall. */
+.apropos-photo { margin: 0; }
+.apropos-photo img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 6px;
+    display: block;
+}
+.apropos-text { display: flex; flex-direction: column; }
+.apropos-name {
+    font-size: 32px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: #E3E3E3;
+    margin: 0;
+    line-height: 1.1;
+}
+.apropos-role {
+    color: #8c9398;
+    letter-spacing: 2px;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin: 14px 0 0;
+}
+.apropos-role::after {
+    content: "";
+    display: block;
+    width: 48px;
+    border-top: 2px solid #54684F;
+    margin: 28px 0 0;
+}
+.apropos-text p {
+    color: #a7aeb3;
+    line-height: 28px;
+    font-size: 15px;
+    margin: 18px 0 0;
+    text-align: justify;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+.apropos-text strong { color: #f0f1f2; font-weight: bold; }
+.apropos-availability { margin-top: 22px; }
+.apropos-cta {
+    align-self: flex-start;
+    display: inline-block;
+    margin-top: 30px;
+    color: #E3E3E3;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #54684F;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+.apropos-cta:hover, .apropos-cta:focus {
+    color: #fff;
+    border-color: #fff;
+    outline: none;
+}
+/* Wide desktop: the photo column is wide enough here (container is 1170px) that
+   matching the photo's height to the text column reads as balanced rather than
+   squeezed, so restore the equal-height layout. */
+@media screen and (min-width: 1200px) {
+    .apropos-grid { align-items: stretch; }
+    .apropos-photo { height: 100%; }
+    .apropos-photo img { height: 100%; aspect-ratio: auto; }
+}
+@media screen and (max-width: 767px) {
+    .apropos-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 12px; }
+    .apropos-photo img { aspect-ratio: 4 / 5; max-width: 380px; margin: 0 auto; }
+}
+
+/* ==========================================================================
 Page-specific hero backgrounds
 ========================================================================== */
 .page-drone .hero          { background-image: url('../img/drone1.webp'); }
