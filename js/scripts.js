@@ -12,7 +12,7 @@ const WAYPOINTS = [
 	{ sel: '.wp1', offset: '75%', anim: 'fadeInLeft' },
 	{ sel: '.wp2', offset: '75%', anim: 'fadeInUp' },
 	{ sel: '.wp3', offset: '55%', anim: 'fadeInDown' },
-	{ sel: '.wp4', offset: '75%', anim: 'fadeInDown' },
+	{ sel: '.wp4', offset: '100%', anim: 'fadeInDown' },
 	{ sel: '.wp5', offset: '75%', anim: 'fadeInUp' },
 ];
 
@@ -20,7 +20,10 @@ $(document).ready(function() {
 
 	WAYPOINTS.forEach(({ sel, offset, anim }) => {
 		$(sel).waypoint(function() {
-			$(sel).addClass('animated ' + anim);
+			// `this` is the element that scrolled into view (jQuery Waypoints v2),
+			// so only that element animates — content flows down on scroll
+			// instead of all matching elements revealing at once.
+			$(this).addClass('animated ' + anim);
 		}, { offset: offset });
 	});
 

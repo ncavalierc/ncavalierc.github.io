@@ -245,7 +245,9 @@ hr { width: 50%; }
     .page-index .hero .container { width: 100%; display: flex; flex-direction: column; }
     .page-index .hero .container > .row:nth-child(2) { margin-top: auto; margin-bottom: auto; }
     .page-index .hero .inner { padding-top: 0; }
-    .page-index .hero h1 span { display: block; }
+    /* MOTIM and PICTURES stack on two lines; hide the joining "." so it doesn't appear at the start of the second line */
+    .page-index .hero h1 #titre { display: block; }
+    .page-index .hero h1 .title-dot { display: none; }
 }
 
 /* ==========================================================================
@@ -257,7 +259,13 @@ header
     padding-left:40px
 }
 
-#videaste { margin-top: -5px; }
+/* Center the line on the "•" itself: the two words share the space equally on
+   each side and hug the separator, so the bullet sits at the exact center. */
+#videaste { margin-top: -5px; display: flex; justify-content: center; align-items: baseline; }
+#videaste .vid-word { flex: 1 1 0; }
+#videaste .vid-word:first-child { text-align: right; }
+#videaste .vid-word:last-child { text-align: left; }
+#videaste .vid-sep { flex: 0 0 auto; padding: 0 0.5em; }
 /* ==========================================================================
 Portfolio
 ========================================================================== */
