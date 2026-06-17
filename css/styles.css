@@ -576,7 +576,7 @@ h3{
     border-top: 2px solid #54684F;
     margin: 28px 0 0;
 }
-.apropos-text p {
+.apropos-text p:not(.apropos-role) {
     color: #a7aeb3;
     line-height: 28px;
     font-size: 15px;
@@ -612,6 +612,11 @@ h3{
     .apropos-grid { align-items: stretch; }
     .apropos-photo { height: 100%; }
     .apropos-photo img { height: 100%; aspect-ratio: auto; }
+}
+/* Tablet: at its native 3:4 ratio the photo looks small beside the tall text column,
+   so reframe to a taller crop (subject is centred, only side landscape is trimmed). */
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+    .apropos-photo img { aspect-ratio: 3 / 5; }
 }
 @media screen and (max-width: 767px) {
     .apropos-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 12px; }
