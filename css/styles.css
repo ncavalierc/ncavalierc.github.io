@@ -535,24 +535,25 @@ h3{
 .apropos.section-padding { padding-bottom: 60px; }
 .apropos-grid {
     display: grid;
-    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
     gap: 60px;
     align-items: start;
     max-width: 1160px;
     margin: 0 auto;
 }
-/* Always show the photo at its native 3:4 ratio (no stretch, no crop) and top-aligned
-   with the name, so it never gets squeezed when the text column wraps tall. */
-.apropos-photo { margin: 0; }
+/* Tablet/desktop: text on the left, photo on the right (source order keeps the photo
+   first so it stays on top in the single-column mobile layout). */
+.apropos-text { display: flex; flex-direction: column; order: 1; }
+.apropos-photo { margin: 0; order: 2; overflow: hidden; border-radius: 6px; }
+/* 1.1x zoom, clipped by the frame, to crop out the trail sign on the left edge. */
 .apropos-photo img {
     width: 100%;
     aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: center;
-    border-radius: 6px;
     display: block;
+    transform: scale(1.1);
 }
-.apropos-text { display: flex; flex-direction: column; }
 .apropos-name {
     font-size: 32px;
     letter-spacing: 5px;
@@ -616,10 +617,15 @@ h3{
 /* Tablet: at its native 3:4 ratio the photo looks small beside the tall text column,
    so reframe to a taller crop (subject is centred, only side landscape is trimmed). */
 @media screen and (min-width: 768px) and (max-width: 1199px) {
+    /* Bootstrap caps .container at 750/970px here, leaving large dead margins on wider
+       tablets. Make it fluid so the content (and the photo) uses the available width. */
+    .apropos .container { width: auto; max-width: 1160px; padding-left: 30px; padding-right: 30px; }
     .apropos-photo img { aspect-ratio: 3 / 5; }
 }
 @media screen and (max-width: 767px) {
     .apropos-grid { grid-template-columns: 1fr; gap: 30px; padding: 0 12px; }
+    /* single column: keep the photo on top (source order), the switch doesn't apply */
+    .apropos-photo, .apropos-text { order: 0; }
     .apropos-photo img { aspect-ratio: 4 / 5; max-width: 380px; margin: 0 auto; }
 }
 
