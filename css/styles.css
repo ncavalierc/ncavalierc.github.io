@@ -532,7 +532,7 @@ h3{
 ========================================================================== */
 /* Match the space before the footer to the space above the first element (= padding-top),
    instead of the wider default .section-padding bottom. */
-.apropos.section-padding { padding-bottom: 60px; }
+.apropos.section-padding { padding-top: 45px; padding-bottom: 45px; }
 .apropos-grid {
     display: grid;
     grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -634,9 +634,6 @@ Page-specific hero backgrounds
 ========================================================================== */
 .page-drone .hero          { background-image: url('../img/drone1.webp'); }
 .page-clips .hero          { background-image: url('../img/billy.webp'); }
-.page-musiques .hero       { background-image: url('../img/excalibur.webp'); }
-.page-docus .hero          { background-image: url('../img/docus1.webp'); }
-.page-shootings .hero      { background-image: url('../img/mariage1.webp'); }
 .page-videosevenements .hero { background-image: url('../img/fleurmariage.webp'); }
 
 /* ==========================================================================
@@ -655,9 +652,6 @@ Page-specific photo caption alignment (clips page)
 Page-specific typography (prestation pages)
 ========================================================================== */
 .prestation-page h3 { font-size: 16px; font-weight: lighter; }
-.page-docus .hero h1 { font-size: 33px; }
-
-.page-shootings h4 { font-size: 16px; color: #DBDBDB; font-weight: lighter; margin: 0.83em 0; }
 
 /* ==========================================================================
 Page-specific photo padding (photos & videos pages)
