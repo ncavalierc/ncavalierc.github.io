@@ -245,9 +245,8 @@ hr { width: 50%; }
     .page-index .hero .container { width: 100%; display: flex; flex-direction: column; }
     .page-index .hero .container > .row:nth-child(2) { margin-top: auto; margin-bottom: auto; }
     .page-index .hero .inner { padding-top: 0; }
-    /* MOTIM and PICTURES stack on two lines; hide the joining "." so it doesn't appear at the start of the second line */
-    .page-index .hero h1 #titre { display: block; }
-    .page-index .hero h1 .title-dot { display: none; }
+    /* Tighten the (longer) name on narrow screens so it doesn't overflow */
+    .page-index .hero h1 { font-size: 32px; letter-spacing: 6px; }
 }
 
 /* ==========================================================================
